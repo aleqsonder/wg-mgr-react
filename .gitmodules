@@ -1,0 +1,3 @@
+[submodule ".devcontainer/modules/wg-mgr-spring"]
+	path = .devcontainer/modules/wg-mgr-spring
+	url = https://github.com/aleqsonder/wg-mgr-spring
