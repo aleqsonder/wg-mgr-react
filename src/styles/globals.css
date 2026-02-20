@@ -1,0 +1,24 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background: transparent; /* ← ВАЖНО */
+    color: var(--color-text-primary);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+.neon-text {
+    color: var(--color-neon-cyan);
+    text-shadow: var(--glow-cyan);
+}
+
+.section {
+    padding: 80px 0;
+}

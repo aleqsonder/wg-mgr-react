@@ -1,0 +1,14 @@
+:root {
+    --color-bg: #000000;
+    --color-bg-secondary: #0a0a0a;
+
+    --color-neon-cyan: #00f6ff;
+    --color-neon-blue: #3b82f6;
+    --color-neon-purple: #8a2eff;
+
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #ffffff;
+
+    --glow-cyan: 0 0 12px rgba(0, 246, 255, 0.6);
+    --glow-purple: 0 0 12px rgba(138, 46, 255, 0.6);
+}
