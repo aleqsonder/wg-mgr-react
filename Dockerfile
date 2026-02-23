@@ -1,9 +1,11 @@
-FROM node:24.13.1-alpine
+FROM node:24.13.1 AS builder
 WORKDIR /app
 
 COPY package*.json .
 RUN npm install
 
 COPY . .
-EXPOSE 5173
-CMD npm run dev
+RUN npm run build
+
+FROM httpd:alpine AS runtime
+COPY --from=builder /app/dist /usr/local/apache2/htdocs
