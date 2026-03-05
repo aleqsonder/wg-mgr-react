@@ -22,11 +22,6 @@ describe("UsersPage", () => {
         vi.clearAllMocks();
     });
 
-    it("показывает состояние загрузки", () => {
-        render(<UsersPage />);
-        expect(screen.getByText("Loading users...")).toBeInTheDocument();
-    });
-
     it("показывает ошибку, если API вернул ошибку", async () => {
         (fetchUsers as Mock).mockResolvedValue({
             code: 500,

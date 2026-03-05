@@ -2,7 +2,7 @@ import type {UserContactResponse, UserRequest, UserResponse} from "../types/user
 import type {ResponseMessage} from "../types/responseMessages.ts";
 
 
-function isUserContactResponse(obj: unknown): obj is UserContactResponse {
+export function isUserContactResponse(obj: unknown): obj is UserContactResponse {
     if (typeof obj !== "object" || obj === null) return false;
 
     const o = obj as Record<string, unknown>;
@@ -13,7 +13,7 @@ function isUserContactResponse(obj: unknown): obj is UserContactResponse {
     );
 }
 
-function isUserResponse(obj: unknown): obj is UserResponse {
+export function isUserResponse(obj: unknown): obj is UserResponse {
     if (typeof obj !== "object" || obj === null) return false;
 
     const o = obj as Record<string, unknown>;
@@ -26,11 +26,11 @@ function isUserResponse(obj: unknown): obj is UserResponse {
     );
 }
 
-function isUserResponseArray(data: unknown): data is UserResponse[] {
+export function isUserResponseArray(data: unknown): data is UserResponse[] {
     return Array.isArray(data) && data.every(isUserResponse);
 }
 
-function isResponseMessage(obj: unknown): obj is ResponseMessage {
+export function isResponseMessage(obj: unknown): obj is ResponseMessage {
     if (typeof obj !== "object" || obj === null) return false;
 
     const o = obj as Record<string, unknown>;
