@@ -1,0 +1,9 @@
+.devcontainer
+.github
+dist
+node_modules
+.dockerignore
+.gitignore
+.gitmodules
+Dockerfile
+README.md
