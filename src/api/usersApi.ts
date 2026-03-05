@@ -156,4 +156,78 @@ export async function createUser(
     }
 }
 
+export async function deleteUser(id: number): Promise<ResponseMessage | { success: true }> {
+    try {
+        const response = await fetch(`/api/users/${id}`, {
+            method: "DELETE"
+        });
+
+        // 204 No Content → тело отсутствует, json() вызывать нельзя
+        if (response.status === 204) {
+            return { success: true };
+        }
+
+        // Если сервер вернул ошибку с телом
+        const data: unknown = await response.json().catch(() => null);
+
+        if (isResponseMessage(data)) {
+            return data;
+        }
+
+        return {
+            code: response.status,
+            message: "Unexpected server error"
+        };
+
+    } catch (err: unknown) {
+        return {
+            code: 0,
+            message: err instanceof Error ? err.message : "Unknown network error"
+        };
+    }
+}
+
+export async function editUser(
+    id: number,
+    payload: UserRequest
+): Promise<UserResponse | ResponseMessage> {
+    try {
+        const response = await fetch(`/api/users/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        const data: unknown = await response.json().catch(() => null);
+
+        if (response.ok) {
+            if (isUserResponse(data)) {
+                return data;
+            }
+
+            return {
+                code: 500,
+                message: "Invalid user format"
+            };
+        }
+
+        if (isResponseMessage(data)) {
+            return data;
+        }
+
+        return {
+            code: response.status,
+            message: "Unexpected server error"
+        };
+
+    } catch (err: unknown) {
+        return {
+            code: 0,
+            message: err instanceof Error ? err.message : "Unknown network error"
+        };
+    }
+}
+
+
+
 
