@@ -6,6 +6,11 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+    test: {
+      environment: "happy-dom",
+      globals: true,
+      setupFiles: "./vitest.setup.ts",
+    },
     server: {
       host: '0.0.0.0',
       proxy: {
